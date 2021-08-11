@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <header>
+        <div class="container">
+            <h1 class="align-content-center">Analyzer</h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    {{ form(form) }}
+                </div>
+            </div>
+            {% block result %}
+            {% endblock %}
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'home.html.twig' %}
+
+{% block result %}
+    <div class="row">
+        <div class="col-12">
+            <div class="code-wrapper">
+                <pre>{{ fileContent | raw }}</pre>
+            </div>
+        </div>
+    </div>
+{% endblock %}
