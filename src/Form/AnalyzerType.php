@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class AnalyzerType extends AbstractType
 {
@@ -25,7 +26,8 @@ class AnalyzerType extends AbstractType
                             'text/x-c',
                         ],
                         'mimeTypesMessage' => 'Пожалуйста, загрузите валидный \'cpp\' файл!',
-                    ])
+                    ]),
+                    new NotBlank(),
                 ]
             ])
             ->add('submit', SubmitType::class, [

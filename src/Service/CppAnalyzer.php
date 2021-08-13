@@ -29,11 +29,13 @@ class CppAnalyzer
         'T_BRACE_OPEN' => '{',
         'T_BRACE_CLOSE' => '}',
         'T_SEMICOLON' => ';',
+        'T_COMMA' => ',',
     ];
 
     protected const PARAMETERS = [
         'operators' => [
             'T_SEMICOLON',
+            'T_COMMA',
             'T_CAST',
             'T_PLUS',
             'T_MINUS',
