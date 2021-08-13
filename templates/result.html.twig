@@ -1,11 +1,104 @@
 {% extends 'home.html.twig' %}
 
 {% block result %}
-    <div class="row">
-        <div class="col-12">
-            <div class="code-wrapper">
-                <pre>{{ fileContent | raw }}</pre>
+
+    <div class="inform-block">
+        <div class="row">
+            <div class="col-12">
+                <div class="block-header"><h2>Исходный код</h2></div>
+                <div class="code-wrapper">
+                    <pre>{{ cppAnalyzer.htmlContent | raw }}</pre>
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="inform-block">
+        <div class="row">
+            <div class="col-12">
+                <div class="block-header"><h2>Операторы</h2></div>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">№</th>
+                        <th style="width: 48%" scope="col">Оператор</th>
+                        <th style="width: 48%" scope="col">Количество</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for operator in cppAnalyzer.operators %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ operator.value }}</td>
+                            <td>{{ operator.count }}</td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <th scope="row"></th>
+                        <td><em>&#951;<sub>1</sub></em> = {{ cppAnalyzer.operators|length }}</td>
+                        <td><em>&#925;<sub>1</sub></em> = {{ cppAnalyzer.operatorsCount }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="inform-block">
+        <div class="row">
+            <div class="col-12">
+                <div class="block-header"><h2>Операнды</h2></div>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">№</th>
+                        <th style="width: 48%" scope="col">Операнд</th>
+                        <th style="width: 48%" scope="col">Количество</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for operand in cppAnalyzer.operands %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ operand.value }}</td>
+                            <td>{{ operand.count }}</td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <th scope="row"></th>
+                        <td><em>&#951;<sub>2</sub></em> = {{ cppAnalyzer.operands|length }}</td>
+                        <td><em>&#925;<sub>2</sub></em> = {{ cppAnalyzer.operandsCount }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="inform-block">
+        <div class="row">
+            <div class="col-12">
+                <div class="block-header"><h2>Вычисление метрик Холстеда</h2></div>
+                <div>
+                    <p class="fs-4">
+                        Словарь программы: <em>&#951;</em> = <em>&#951;<sub>1</sub></em> + <em>&#951;<sub>2</sub></em> =
+                        {{cppAnalyzer.operators|length }} + {{cppAnalyzer.operands|length }}
+                        = {{ cppAnalyzer.operators|length + cppAnalyzer.operands|length }}
+                    </p>
+                    <p class="fs-4">
+                        Длина реализации: <em>&#925;</em> = <em>&#925;<sub>1</sub></em> + <em>&#925;<sub>2</sub></em> =
+                        {{cppAnalyzer.operatorsCount}} + {{cppAnalyzer.operandsCount }}
+                        = {{ cppAnalyzer.operatorsCount + cppAnalyzer.operandsCount }}
+                    </p>
+                    <p class="fs-4">
+                        Объем программы: <em>V</em> = <em>&#925;</em> * <em>log<sub>2</sub>(&#951;)</em> =
+                        {{ cppAnalyzer.operatorsCount + cppAnalyzer.operandsCount }} *
+                        <em>log<sub>2</sub>({{ cppAnalyzer.operators|length + cppAnalyzer.operands|length }})</em>
+                        = {{ cppAnalyzer.volume }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

@@ -22,6 +22,7 @@ class AnalyzerType extends AbstractType
                         'maxSize' => '1024k',
                         'mimeTypes' => [
                             'text/x-c++',
+                            'text/x-c',
                         ],
                         'mimeTypesMessage' => 'Пожалуйста, загрузите валидный \'cpp\' файл!',
                     ])

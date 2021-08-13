@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Form\AnalyzerType;
+use App\Service\Analyzer\Analyzer;
 use App\Service\CppAnalyzer;
+use App\Service\Lexer\Lexer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,15 +29,11 @@ class DefaultController extends AbstractController
 
             if($form->isSubmitted() && $form->isValid())
             {
-                $fileContent = $cppAnalyzer
-                    ->addCppFile($form->get('file')->getData())
-                    ->getHtmlContent()
-                ;
-                //dump($fileContent);
+                $cppAnalyzer->parseCode($form->get('file')->getData()->getContent());
 
                 return $this->render('result.html.twig', [
                     'form' => $form->createView(),
-                    'fileContent' => $fileContent,
+                    'cppAnalyzer' => $cppAnalyzer,
                 ]);
             }
         }

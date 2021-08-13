@@ -1,8 +1,33 @@
+html {
+    height: 100%;
+}
+
 body {
     margin: 0;
     padding: 0;
     background-color: white;
     min-width: 320px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    flex: 0 0 auto;
+    padding: 10px 0 20px;
+}
+
+.main {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex: 0 0 auto;
+    padding: 20px 0;
+}
+
+.inform-block {
+    margin: 25px 0;
 }
 
 .code-wrapper {
@@ -10,8 +35,34 @@ body {
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
+    margin-bottom: 1rem;
 }
 
 .string {
     color: yellow;
+}
+
+.variable {
+    color: cornflowerblue;
+}
+
+.cast {
+    color: #6969e8;
+}
+
+.function {
+    color: yellowgreen;
+}
+
+.int,
+.float {
+    color: darkslateblue;
+}
+
+.include {
+    color: lightgray;
+}
+
+.tag {
+    color: gray;
 }
