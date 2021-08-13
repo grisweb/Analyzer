@@ -12,7 +12,7 @@ class CppAnalyzer
         'T_STRING' => '"([^"\\\\]*(?:\.[^"]*)*)"',
         'T_CAST' => '(long double|double|long|int|)\b',
         'T_VARIABLE' => '[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*\b(?!\()',
-        'T_FUNCTION' => '[a-zA-Z_\\x7f-\\hhero][a-zA-Z0-9_\\x7f-\\xff]*\b',
+        'T_FUNCTION' => '[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*\b',
         'T_FLOAT' => '([0-9]*\\.[0-9]+|[0-9]+\\.[0-9]*)(?:[eE][\\+\\-]?[0-9]+)?',
         'T_INT' => '(?:0|[1-9][0-9]*)(?:[eE][\\+\\-]?[0-9]+)?',
         'T_PLUS' => '\+',
